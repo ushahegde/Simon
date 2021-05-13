@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgstell"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+
+        android:id="@+id/scorelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:gravity="center_vertical"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:text=" "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/bgstell"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.hegdeapps.simonsays.SimonCell
+                android:id="@+id/cell1"
+                android:layout_width="@dimen/simoncellsize"
+                android:layout_height="@dimen/simoncellsize"
+                android:src="@drawable/bluebutton" />
+
+            <com.hegdeapps.simonsays.SimonCell
+                android:id="@+id/cell2"
+                android:layout_width="@dimen/simoncellsize"
+                android:layout_height="@dimen/simoncellsize"
+                android:src="@drawable/greenbutton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.hegdeapps.simonsays.SimonCell
+                android:id="@+id/cell3"
+                android:layout_width="@dimen/simoncellsize"
+                android:layout_height="@dimen/simoncellsize"
+                android:src="@drawable/redbutton" />
+
+            <com.hegdeapps.simonsays.SimonCell
+                android:id="@+id/cell4"
+                android:layout_width="@dimen/simoncellsize"
+                android:layout_height="@dimen/simoncellsize"
+                android:src="@drawable/yellowbutton" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
