@@ -83,8 +83,7 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
             mImgView[i]!!.setOnClickListener(this)
             mImgView[i]!!.setOff()
         }
-       /* btnSound = findViewById<View>(R.id.soundonoff) as ImageButton
-        btnSound!!.setOnClickListener(this)*/
+
         if (savedInstanceState != null) {
             mInstancesSaved = true
             val arr =
@@ -97,20 +96,12 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
             mLevel = savedInstanceState.getInt(STR_LEVEL)
             mTimerTaskCompleted =
                 savedInstanceState.getBoolean(STR_TIMER_COMPLETED)
-            /*val btn =
-                findViewById<View>(R.id.howto) as ImageButton
-            btn.setOnClickListener(this)*/
-            // if(!mTimerTaskCompleted){
+
             initializeSoundPools()
-            //   glowCells2();
-//}else{
-//    initializeSoundPools();
-// }
+
         } else {
             initializeSoundPools()
-          /*  val btn =
-                findViewById<View>(R.id.howto) as ImageButton
-            btn.setOnClickListener(this)*/
+
             startGame()
         }
     }
@@ -184,65 +175,23 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startGame() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        // boolean showHelp = pref.getBoolean("SHOW_HELP_SIMON", true);
-/* Button btnHowTo = (Button)findViewById(R.id.howto);
-        if(!showHelp){
-            btnHowTo.setVisibility(View.INVISIBLE);
-        }else{
-            btnHowTo.setVisibility(View.VISIBLE);
-        }*/
+
         val rnd =
             Random(Calendar.getInstance().timeInMillis)
         if (mCellOnList == null) {
             mCellOnList = ArrayList()
         }
-        //    mCellOnList.clear();
-//      for(int i=1;i<=mLevel;i++){
+
         val num = rnd.nextInt(4)
         mCellOnList!!.add(num)
-        //   }
-/* if(mSoundPool==null) {
 
 
-
-        }
-*/
-// glowCells2();
         if (mSoundPoolLoaded) {
             glowCells2()
         }
     }
 
-    /*private void glowCells() {
-        int size = mCellOnList.size();
-       mCellNum = 0;
-        int num = mCellOnList.get(mCellNum++);
-        SimonCell cell = mImgView[num];
-        cell.setOn();
-        CommonMethods.playSound(this,mSoundPool,mSoundID[num]);
-        startTimer(cell);
-        if(size<=1)
-            return;
-        CountDownTimer timer = new CountDownTimer((size-1)*1000,1000) {
-            @Override
-            public void onTick(long l) {
-                int num = mCellOnList.get(mCellNum++);
-                SimonCell cell = mImgView[num];
-                cell.setOn();
 
-                startTimer(cell);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        };
-        timer.start();
-
-    }
-*/
     private fun startTimer(cell: SimonCell?) {
         val timer: CountDownTimer = object : CountDownTimer(300, 400) {
             override fun onTick(l: Long) {}
@@ -253,49 +202,16 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
         timer.start()
     }
 
-    /* private void createSoundIds() {
-        mSoundPool =  new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-        mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(SoundPool soundPool, int sampleId,
-                                       int status) {
-                mSoundPoolLoaded = true;
-            }
-        });
 
-        mSoundIDC = mSoundPool.load(this, R.raw.s1, 1);
-        mSoundIDD = mSoundPool.load(this,R.raw.s2,1);
-        mSoundIDE = mSoundPool.load(this,R.raw.s3,1);
-        mSoundIDF = mSoundPool.load(this,R.raw.s4,1);
-    }*/
-/*  private void createCells() {
-        mCellList = new ArrayList<SimonCell>();
-        SimonCell cell1 = new SimonCell(this,mSoundPool,SimonCell.CELL_TYPE_BLUE,mSoundIDC);
-        SimonCell cell2 = new SimonCell(this,mSoundPool,SimonCell.CELL_TYPE_RED,mSoundIDD);
-        SimonCell cell3 = new SimonCell(this,mSoundPool,SimonCell.CELL_TYPE_GREEN,mSoundIDE);
-        SimonCell cell4 = new SimonCell(this,mSoundPool,SimonCell.CELL_TYPE_YELLOW,mSoundIDF);
-        mCellList.add(cell1);
-        mCellList.add(cell2);
-        mCellList.add(cell3);
-        mCellList.add(cell4);
-        cell1.setOff();
-        cell2.setOff();
-        cell3.setOff();
-        cell4.setOff();
-    }
-
-  */
     override fun onClick(view: View) {
         val id = view.id
-      /*  if (id == R.id.soundonoff) {
-            processSoundButton()
-        }*/
+
         when (id) {
             R.id.cell1 -> processCellClicked(0, view as SimonCell)
             R.id.cell2 -> processCellClicked(1, view as SimonCell)
             R.id.cell3 -> processCellClicked(2, view as SimonCell)
             R.id.cell4 -> processCellClicked(3, view as SimonCell)
-            //R.id.howto -> showHowToDialog()
+
         }
     }
 
@@ -311,24 +227,12 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
         d.show()
     }
 
-    /* private void hideHelpButton() {
-        Button howTo = (Button)findViewById(R.id.howto);
-        howTo.setVisibility(View.INVISIBLE);
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor edtr = pref.edit();
-        edtr.putBoolean("SHOW_HELP_SIMON", false);
-        edtr.commit();
 
-    }
-*/
     private fun processSoundButton() {
         if (mSoundOn) {
             mSoundOn = false
-
-           // btnSound!!.setImageDrawable(resources.getDrawable(R.drawable.sound_on))
         } else {
             mSoundOn = true
-            //btnSound!!.setImageDrawable(resources.getDrawable(R.drawable.sound_off))
         }
         invalidateOptionsMenu()
     }
@@ -343,15 +247,6 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
         return true
     }
 
-    private fun startTimerForClick() {
-        mTimerForClick = object : CountDownTimer(5000, 5000) {
-            override fun onTick(l: Long) {}
-            override fun onFinish() {
-                showToast()
-            }
-        }
-        (mTimerForClick as CountDownTimer).start()
-    }
 
     private fun showToast() {
         val numCellsLeft = mLevel - count
@@ -428,13 +323,7 @@ class SimonActivity : AppCompatActivity(), View.OnClickListener {
         mTimer!!.schedule(mTimerTask, 0, 700)
     }
 
-    /*   private void showTitle() {
-        TextView score = (TextView) findViewById(R.id.score);
 
-        score.setText("Play notes again..");
-
-    }
-*/
     private fun glowOneCell(celIndex: Int) {
         val cell = mImgView[celIndex]
         if (mPrevSoundStreamID != 0) {
