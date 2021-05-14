@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">SimonSays</string>
-    <string name="simon_how_to_play">Game has four colored buttons each producing different note. \n\nOne or more buttons light up producing a series of notes. You should repeat the same pattern by pressing the buttons.</string>
-
-</resources>
